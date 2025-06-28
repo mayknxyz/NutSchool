@@ -1,5 +1,7 @@
 # NutSchool.com Website
 
+![NutSchool Logo](https://raw.githubusercontent.com/mayknxyz/nsc-t101-nutschool-com-archived/main/public/images/logo-nutschool.png?token=GHSAT0AAAAAADGNKDDO6TTYN6S4QG5QKGQ62DAOXHA)
+
 ---
 
 ## 🌐 Our Digital Home: Spreading the Word for Programming Education
