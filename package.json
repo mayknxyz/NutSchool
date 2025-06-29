@@ -1,0 +1,14 @@
+{
+  "name": "nutschool-com",
+  "version": "0.1.0",
+  "description": "NutSchool.com website",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "start": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^5.10.1"
+  }
+}
