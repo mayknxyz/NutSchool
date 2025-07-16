@@ -1,10 +1,24 @@
 ---
-// Simple glass effect card component
----
+export interface Props {
+  headingType?: 'h1' | 'h2' | 'h3';
+  headingText?: string;
+  paragraphText?: string;
+}
 
-<div class="w-full max-w-full mx-auto">
-  <!-- Glass Effect Card -->
-  <div class="glass-card w-full p-8 relative h-64">
-    <!-- Empty glass card with just the glass effect -->
-  </div>
-</div>
+const { 
+  headingType = 'h2', // Default to h2 if not specified
+  headingText, 
+  paragraphText 
+} = Astro.props;
+
+const Heading = headingType;
+---
+<section class="my-8">
+    <div class="w-full max-w-full mx-auto">
+        <!-- Glass Effect Card -->
+        <div class="glass-card w-full px-8 py-20 relative text-center">
+            {headingText && <Heading>{headingText}</Heading>}
+            {paragraphText && <p>{paragraphText}</p>}
+        </div>
+    </div>
+</section>

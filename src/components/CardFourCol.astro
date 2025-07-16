@@ -1,28 +1,33 @@
 ---
-// Four column glass effect cards component
----
+export interface CardContent {
+  headingType?: 'h1' | 'h2' | 'h3';
+  headingText?: string;
+  paragraphText?: string;
+}
 
-<div class="w-full">
-  <!-- Four Column Glass Cards -->
-  <div class="grid grid-cols-4 gap-8">
-    <!-- First Glass Card -->
-    <div class="glass-card w-full p-8 relative h-64">
-      <!-- Empty glass card with just the glass effect -->
+export interface Props {
+  cards?: CardContent[];
+}
+
+const { cards = [
+  { headingType: 'h2', headingText: 'Card 1', paragraphText: 'Placeholder content.' },
+  { headingType: 'h2', headingText: 'Card 2', paragraphText: 'Placeholder content.' },
+  { headingType: 'h2', headingText: 'Card 3', paragraphText: 'Placeholder content.' },
+  { headingType: 'h2', headingText: 'Card 4', paragraphText: 'Placeholder content.' },
+] } = Astro.props;
+---
+<section class="my-8">
+    <div class="w-full max-w-full mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {cards.map(card => {
+                const Heading = card.headingType || 'h2';
+                return (
+                    <div class="glass-card w-full px-8 py-20 relative text-center">
+                        {card.headingText && <Heading>{card.headingText}</Heading>}
+                        {card.paragraphText && <p>{card.paragraphText}</p>}
+                    </div>
+                )
+            })}
+        </div>
     </div>
-    
-    <!-- Second Glass Card -->
-    <div class="glass-card w-full p-8 relative h-64">
-      <!-- Empty glass card with just the glass effect -->
-    </div>
-    
-    <!-- Third Glass Card -->
-    <div class="glass-card w-full p-8 relative h-64">
-      <!-- Empty glass card with just the glass effect -->
-    </div>
-    
-    <!-- Fourth Glass Card -->
-    <div class="glass-card w-full p-8 relative h-64">
-      <!-- Empty glass card with just the glass effect -->
-    </div>
-  </div>
-</div>
+</section>

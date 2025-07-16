@@ -8,4 +8,22 @@
   backdrop-filter: blur(9.2px);
   -webkit-backdrop-filter: blur(9.2px);
   border: 1px solid rgba(255, 255, 255, 0.23);
+  @apply text-black; /* Default text color for cards */
+}
+
+/* Custom heading and paragraph styles within glass-card */
+.glass-card h1 {
+  @apply text-5xl font-extrabold mb-4;
+}
+
+.glass-card h2 {
+  @apply text-3xl font-bold mb-4;
+}
+
+.glass-card h3 {
+  @apply text-2xl font-bold mb-4;
+}
+
+.glass-card p {
+    @apply text-lg;
 }
