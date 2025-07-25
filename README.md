@@ -42,108 +42,34 @@ We appreciate your patience and interest as we lay the foundation for this impac
 
 ---
 
-## 🚀 Local Development with Docker
-
-For consistent and isolated development, we recommend using Docker. This ensures everyone is working with the same environment and dependencies.
+## 🚀 Local Development with Bun
 
 ### Prerequisites
 
-* [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running. Ensure you have a recent version that supports `docker compose watch`.
+* [Bun](https://bun.sh/) installed and in your PATH
 
-### 1. Project Setup for Docker
+### 1. Project Setup
 
-Ensure your project root contains the following files:
-
-* **`Dockerfile`**: Defines how to build your Astro application's Docker image.
-* **`compose.yaml`** (or `docker-compose.yml`): Orchestrates your services for local development.
-
-**Example `Dockerfile` (for Astro Development Server):**
-
-```dockerfile
-# Dockerfile
-FROM node:lts-alpine
-
-WORKDIR /app
-
-# Copy package.json and package-lock.json first to leverage Docker cache
-COPY package*.json ./
-RUN npm install
-
-# Copy the rest of your application code (will be synced by Docker Watch)
-COPY . .
-
-# Expose Astro's default development port
-EXPOSE 4321
-
-# Command to run Astro's dev server
-CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
-````
-
-**Example `compose.yaml` (for Astro Development with Docker Watch):**
-
-YAML
-
-```
-# compose.yaml
-version: '3.8'
-
-services:
-  astro-dev:
-    build: .
-    ports:
-      - "4321:8080" # Map host port 4321 to container port 4321
-    working_dir: /app
-    environment:
-      NODE_ENV: development
-    develop:
-      watch:
-        # Action 1: Sync all source files
-        # Copies changed files directly into the running container for live reloading.
-        - action: sync
-          path: ./ # Watch the entire project directory on the host
-          target: /app # Sync to the /app directory inside the container
-          ignore:
-            - node_modules/ # Important: Don't sync node_modules to prevent issues
-            - dist/       # Don't sync build output
-            - .git/       # Ignore Git metadata
-            - .dockerignore # Ignore Docker ignore file
-            - .env* # Ignore environment files
-
-        # Action 2: Rebuild if package.json (or other critical files) change
-        # Triggers a full Docker build and container recreation, e.g., for new dependencies.
-        - action: rebuild
-          path: package.json
-          # You might also add other files that necessitate a full rebuild:
-          # - pnpm-lock.yaml
-          # - yarn.lock
-          # - tsconfig.json
-          # - astro.config.mjs
+```bash
+bun install
 ```
 
-### 2. Running Local Development with Docker Watch
+### 2. Development Commands
 
-The `docker compose up --watch` command enables a powerful hands-off development workflow. Docker Compose monitors your local files, and automatically syncs changes or rebuilds services as needed.
+| Command                | Action                                           |
+| :--------------------- | :----------------------------------------------- |
+| `bun run dev`          | Starts local dev server at `localhost:4321`      |
+| `bun run build`        | Build your production site to `./dist/`          |
+| `bun run start`        | Preview your build locally, before deploying     |
+| `bun run lint`         | Check your project for errors                    |
+| `bun run format`       | Format code with Prettier                        |
+| `bun run type-check`   | Type-check your project                          |
 
-1. **Open your terminal** in the root directory of this project (where `compose.yaml` is located).
-    
-2. **Run the following command:**
-    
-    Bash
-    
-    ```
-    docker compose up --watch
-    ```
-    
-    - This will initially build the Docker image (if not already built) and start the Astro development server inside a container.
-        
-    - The `watch` mode will then begin monitoring your project files.
-        
-    - When you modify and save an Astro source file (`.astro`, `.ts`, `.jsx`, `.css`, etc.), Docker Compose will **sync** the changes into the running container, and Astro's dev server will trigger a live reload in your browser.
-        
-    - If you modify `package.json` (e.g., adding a new dependency), Docker Compose will automatically trigger a **rebuild** of the Docker image (including `npm install`) and restart the container, ensuring your environment is up-to-date.
-        
-3. **Access the website:** Once the service is running, you can access the Astro development server in your web browser at: [https://localhost:4321](https://www.google.com/search?q=https://localhost:4321)
-    
+### 3. Deployment (Cloudflare Workers)
+
+- **Build command:** `bun run build`
+- **Deploy command:** `bunx wrangler deploy`
+- **Version command:** `bunx wrangler versions upload`
 
 ---
 
