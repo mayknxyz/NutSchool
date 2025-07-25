@@ -1,6 +1,6 @@
 {
   "name": "nutschool-com",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "NutSchool.com - Everyone should learn programming!",
   "type": "module",
   "main": "index.js",
@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@types/bun": "^1.2.19",
-    "prettier": "^3.6.2",
-    "prettier-plugin-astro": "^0.14.1"
+    "prettier": "^3.0.0",
+    "prettier-plugin-astro": "^0.12.0"
   }
 }
