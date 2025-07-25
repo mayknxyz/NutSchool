@@ -4,9 +4,9 @@
   "description": "NutSchool.com website",
   "main": "index.js",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "start": "astro preview"
+    "dev": "bunx --bun astro dev",
+    "build": "bunx --bun astro build",
+    "start": "bunx --bun astro preview"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
