@@ -1,16 +1,25 @@
 {
   "name": "nutschool-com",
-  "version": "0.1.0",
-  "description": "NutSchool.com website",
+  "version": "0.3.0",
+  "description": "NutSchool.com - Everyone should learn programming!",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "start": "astro preview"
+    "dev": "bunx --bun astro dev",
+    "build": "bunx --bun astro build",
+    "start": "bunx --bun astro preview",
+    "lint": "bunx --bun astro check",
+    "format": "bunx --bun prettier --write .",
+    "type-check": "bunx --bun tsc --noEmit"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
     "astro": "^5.11.1",
     "tailwindcss": "^4.1.11"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.19",
+    "prettier": "^3.0.0",
+    "prettier-plugin-astro": "^0.12.0"
   }
 }

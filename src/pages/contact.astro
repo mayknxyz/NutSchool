@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact Us">
+  <section class="my-8 space-y-8">
+    <!-- Contact Us Card -->
+    <div class="glass-card w-full px-8 py-12 text-center">
+      <h1 class="text-3xl font-bold mb-4">Contact Us</h1>
+      <p class="mb-6">We'd love to hear from you! Join our community discussions to connect with us and other learners.</p>
+    </div>
+    
+    <!-- Join the Discussion Card -->
+    <div class="glass-card w-full px-8 py-12 text-center">
+      <h2 class="text-2xl font-bold mb-4">Join the Discussion</h2>
+      <p class="mb-6">Have questions, suggestions, or want to share your programming journey? Head over to our GitHub Discussions!</p>
+      
+      <a 
+        href="https://github.com/mayknxyz/NutSchool/discussions" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-200"
+      >
+        Go to GitHub Discussions →
+      </a>
+      
+      <p class="mt-6 text-sm text-gray-600">
+        You can ask questions, share your projects, and connect with the NutSchool community.
+      </p>
+    </div>
+    
+    <!-- Other Ways to Connect Card -->
+    <div class="glass-card w-full px-8 py-12 text-center">
+      <h2 class="text-xl font-bold mb-4">Other Ways to Connect</h2>
+      <ul class="space-y-2 text-center">
+        <li>Follow us on <a href="https://github.com/mayknxyz/NutSchool" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline">GitHub</a></li>
+        <li>Star our repository if you find it helpful</li>
+        <li>Contribute to our open-source projects</li>
+      </ul>
+    </div>
+  </section>
+</Layout>
